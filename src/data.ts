@@ -5,10 +5,7 @@ export interface Product {
   price: number;
   imageUrl: string;
   category:
-    | "Wellness"
-    | "Vitamins"
-    | "Food"
-    | "Strength"
+    | "Health & Supplements"
     | "Learning Toys"
     | "Soft Toys"
     | "Home Decor"
@@ -24,7 +21,7 @@ export const products: Product[] = [
     brand: "Dabur",
     price: 345,
     imageUrl: "/71oPudCSyBL._SX679_.jpg",
-    category: "Wellness",
+    category: "Health & Supplements",
     affiliateLink: "https://amzn.to/4f3q3QI",
   },
   {
@@ -33,7 +30,7 @@ export const products: Product[] = [
     brand: "Zandu",
     price: 320,
     imageUrl: "/61OfthxINgL._SX679_.jpg",
-    category: "Wellness",
+    category: "Health & Supplements",
     affiliateLink: "https://amzn.to/3BFvMxP",
   },
   {
@@ -42,7 +39,7 @@ export const products: Product[] = [
     brand: "Baidyanath",
     price: 450,
     imageUrl: "/71xQQD0vbWL._SX679_.jpg",
-    category: "Strength",
+    category: "Health & Supplements",
     affiliateLink: "https://amzn.to/404HXyf",
   },
   {
@@ -51,7 +48,7 @@ export const products: Product[] = [
     brand: "HealthKart",
     price: 499,
     imageUrl: "/41dqHQbgu-L._SY300_SX300_QL70_ML2_.jpg",
-    category: "Vitamins",
+    category: "Health & Supplements",
     affiliateLink: "https://amzn.to/47KyRbP",
   },
   {
@@ -60,7 +57,7 @@ export const products: Product[] = [
     brand: "7 Legions",
     price: 420,
     imageUrl: "/61rU39CP2pL._SX679_.jpg",
-    category: "Food",
+    category: "Health & Supplements",
     affiliateLink: "https://amzn.to/3TMQamL",
   },
   {
@@ -69,7 +66,7 @@ export const products: Product[] = [
     brand: "Dabur",
     price: 520,
     imageUrl: "/41AeSBvu5AL._QL70_FMwebp_.webp",
-    category: "Strength",
+    category: "Health & Supplements",
     affiliateLink: "https://amzn.to/3BONwqy",
   },
   {

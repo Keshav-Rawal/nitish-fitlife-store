@@ -8,10 +8,7 @@ const App: React.FC = () => {
 
   const categories = [
     "All",
-    "Wellness",
-    "Vitamins",
-    "Food",
-    "Strength",
+    "Health & Supplements",
     "Learning Toys",
     "Soft Toys",
     "Home Decor",
