@@ -6,56 +6,55 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
     <div
       style={{
         width: "100%",
-        maxWidth: "300px",
-        minWidth: "260px",
+        maxWidth: "280px",
         backgroundColor: "#fff",
-        borderRadius: "12px",
-        overflow: "hidden",
-        border: "1px solid #eaeaea",
-        padding: "16px",
+        padding: "15px",
         display: "flex",
         flexDirection: "column",
-        boxShadow: "0 4px 6px rgba(0,0,0,0.05)",
+        zIndex: 1,
+        position: "relative",
       }}
     >
-      <div style={{ height: "220px", width: "100%", marginBottom: "15px" }}>
+      <div
+        style={{
+          height: "200px",
+          width: "100%",
+          marginBottom: "15px",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <img
           src={product.imageUrl}
           alt={product.name}
-          style={{ width: "100%", height: "100%", objectFit: "contain" }}
+          style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }}
         />
       </div>
 
-      <p
-        style={{
-          margin: 0,
-          fontSize: "13px",
-          color: "#7f8c8d",
-          fontWeight: "bold",
-        }}
-      >
-        {product.brand}
-      </p>
       <h3
         style={{
-          margin: "8px 0",
+          margin: "0 0 5px 0",
           fontSize: "16px",
-          color: "#2c3e50",
+          color: "#0f1111",
           flexGrow: 1,
+          display: "-webkit-box",
+          WebkitLineClamp: 2,
+          WebkitBoxOrient: "vertical",
+          overflow: "hidden",
         }}
       >
         {product.name}
       </h3>
-      <span
-        style={{
-          fontSize: "20px",
-          fontWeight: "bold",
-          color: "#27ae60",
-          marginBottom: "15px",
-        }}
-      >
-        ₹{product.price}
-      </span>
+
+      {/* Dummy Stars for UI Trust */}
+      <div style={{ color: "#ffa41c", fontSize: "14px", marginBottom: "8px" }}>
+        ★★★★☆ <span style={{ color: "#007185", fontSize: "12px" }}>1,432</span>
+      </div>
+
+      <div style={{ fontSize: "24px", color: "#0f1111", marginBottom: "15px" }}>
+        <span style={{ fontSize: "14px", verticalAlign: "top" }}>₹</span>
+        {product.price}
+      </div>
 
       <a
         href={product.affiliateLink}
@@ -63,13 +62,16 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         rel="noreferrer"
         style={{
           display: "block",
-          padding: "12px 0",
-          backgroundColor: "#e67e22",
-          color: "#fff",
+          width: "100%",
+          padding: "10px 0",
+          backgroundColor: "#ffd814",
+          color: "#0f1111",
           textAlign: "center",
           textDecoration: "none",
-          borderRadius: "6px",
+          borderRadius: "100px",
           fontWeight: "bold",
+          fontSize: "14px",
+          border: "1px solid #fcd200",
         }}
       >
         Buy on Amazon

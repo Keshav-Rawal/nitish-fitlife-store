@@ -22,70 +22,90 @@ const App: React.FC = () => {
       : products.filter((p) => p.category === activeCategory);
 
   return (
-    <div style={{ fontFamily: "sans-serif", width: "100%" }}>
+    <div
+      style={{
+        fontFamily: "Arial, sans-serif",
+        backgroundColor: "#eaeded",
+        minHeight: "100vh",
+      }}
+    >
       <Navbar />
+
+      {/* Sub-Navbar (Category Menu) */}
+      <div
+        style={{
+          display: "flex",
+          gap: "15px",
+          padding: "8px 20px",
+          backgroundColor: "#232f3e",
+          color: "#fff",
+          fontSize: "14px",
+          overflowX: "auto",
+          whiteSpace: "nowrap",
+        }}
+      >
+        <div style={{ fontWeight: "bold", cursor: "pointer" }}>
+          ☰ All Categories
+        </div>
+        {categories.map((cat) => (
+          <div
+            key={cat}
+            onClick={() => setActiveCategory(cat)}
+            style={{
+              cursor: "pointer",
+              borderBottom:
+                activeCategory === cat
+                  ? "2px solid #fff"
+                  : "2px solid transparent",
+              paddingBottom: "2px",
+            }}
+          >
+            {cat}
+          </div>
+        ))}
+      </div>
 
       <main
         style={{
           width: "100%",
-          maxWidth: "1400px",
+          maxWidth: "1500px",
           margin: "0 auto",
           padding: "20px",
         }}
       >
+        {/* Amazon-style subtle banner */}
         <div
           style={{
-            padding: "40px 20px",
-            backgroundColor: "#2c3e50",
+            width: "100%",
+            height: "200px",
+            backgroundColor: "#007185",
             color: "white",
-            borderRadius: "12px",
-            marginBottom: "30px",
-            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: "-50px",
+            zIndex: 0,
+            position: "relative",
           }}
         >
-          <h2>Nitish Bhati Premium Mega Store</h2>
-          <p>
-            Explore our wide range of Health Supplements, Fashion, Toys & Home
-            Decor.
+          <h1 style={{ margin: "0 0 10px 0" }}>
+            Welcome to Our Premium Selection
+          </h1>
+          <p style={{ margin: 0, fontSize: "18px" }}>
+            Top deals on health, toys, and fashion.
           </p>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            gap: "12px",
-            marginBottom: "30px",
-            justifyContent: "center",
-            flexWrap: "wrap",
-          }}
-        >
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              style={{
-                padding: "8px 20px",
-                borderRadius: "25px",
-                border: `2px solid ${activeCategory === cat ? "#2980b9" : "#2c3e50"}`,
-                backgroundColor:
-                  activeCategory === cat ? "#2980b9" : "transparent",
-                color: activeCategory === cat ? "white" : "#2c3e50",
-                cursor: "pointer",
-                fontWeight: "bold",
-                transition: "all 0.3s",
-              }}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
+        {/* Products Grid */}
         <div
           style={{
             display: "flex",
             flexWrap: "wrap",
-            gap: "25px",
+            gap: "20px",
             justifyContent: "center",
+            position: "relative",
+            zIndex: 1,
           }}
         >
           {filteredProducts.map((product) => (
