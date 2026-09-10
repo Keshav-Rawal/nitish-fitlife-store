@@ -1,6 +1,5 @@
 import React from "react";
 
-// Prop define kiya hai taaki App.tsx se search function yahan aa sake
 interface NavbarProps {
   setSearchQuery: (query: string) => void;
 }
@@ -23,7 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ setSearchQuery }) => {
         <div
           style={{ fontSize: "22px", fontWeight: "bold", cursor: "pointer" }}
         >
-          <span style={{ color: "#fff" }}>Keshav's</span>
+          <span style={{ color: "#fff" }}>Nitish</span>
           <span style={{ color: "#f3a847" }}> Store</span>
         </div>
 
