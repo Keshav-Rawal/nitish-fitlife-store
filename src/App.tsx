@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import ProductCard from "./components/ProductCard";
 import { products } from "./data";
@@ -7,6 +7,10 @@ const App: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
+
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const productsPerPage = 16;
 
   const categories = [
     "All",
@@ -18,6 +22,11 @@ const App: React.FC = () => {
     "T-Shirts",
   ];
 
+  // Reset to page 1 whenever category or search query changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeCategory, searchQuery]);
+
   const filteredProducts = products.filter((p) => {
     const matchesCategory =
       activeCategory === "All" || p.category === activeCategory;
@@ -28,6 +37,21 @@ const App: React.FC = () => {
     return matchesCategory && matchesSearch;
   });
 
+  // Pagination Logic
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = filteredProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct,
+  );
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+  // Scroll to top when page changes
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div
       style={{
@@ -35,6 +59,7 @@ const App: React.FC = () => {
         backgroundColor: "#eaeded",
         minHeight: "100vh",
         overflowX: "hidden",
+        paddingBottom: "40px",
       }}
     >
       <Navbar setSearchQuery={setSearchQuery} />
@@ -205,7 +230,7 @@ const App: React.FC = () => {
             zIndex: 1,
           }}
         >
-          {filteredProducts.length === 0 ? (
+          {currentProducts.length === 0 ? (
             <div
               style={{
                 backgroundColor: "#fff",
@@ -221,11 +246,70 @@ const App: React.FC = () => {
               Please try a different search term.
             </div>
           ) : (
-            filteredProducts.map((product) => (
+            currentProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))
           )}
         </div>
+
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "40px",
+              gap: "20px",
+            }}
+          >
+            <button
+              onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
+              disabled={currentPage === 1}
+              style={{
+                padding: "10px 20px",
+                borderRadius: "8px",
+                border: "1px solid #d5d9d9",
+                backgroundColor: currentPage === 1 ? "#f8f8f8" : "#fff",
+                cursor: currentPage === 1 ? "not-allowed" : "pointer",
+                color: currentPage === 1 ? "#a6a6a6" : "#0f1111",
+                fontWeight: "bold",
+                boxShadow:
+                  currentPage === 1 ? "none" : "0 2px 5px rgba(0,0,0,0.05)",
+              }}
+            >
+              ← Previous
+            </button>
+
+            <span style={{ fontSize: "16px", color: "#0f1111" }}>
+              Page <strong>{currentPage}</strong> of{" "}
+              <strong>{totalPages}</strong>
+            </span>
+
+            <button
+              onClick={() =>
+                handlePageChange(Math.min(currentPage + 1, totalPages))
+              }
+              disabled={currentPage === totalPages}
+              style={{
+                padding: "10px 20px",
+                borderRadius: "8px",
+                border: "1px solid #d5d9d9",
+                backgroundColor:
+                  currentPage === totalPages ? "#f8f8f8" : "#fff",
+                cursor: currentPage === totalPages ? "not-allowed" : "pointer",
+                color: currentPage === totalPages ? "#a6a6a6" : "#0f1111",
+                fontWeight: "bold",
+                boxShadow:
+                  currentPage === totalPages
+                    ? "none"
+                    : "0 2px 5px rgba(0,0,0,0.05)",
+              }}
+            >
+              Next →
+            </button>
+          </div>
+        )}
       </main>
     </div>
   );
