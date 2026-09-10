@@ -6,8 +6,6 @@ import { products } from "./data";
 const App: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
-
-  // Search state add kiya hai
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const categories = [
@@ -20,7 +18,6 @@ const App: React.FC = () => {
     "T-Shirts",
   ];
 
-  // Ab filter dono cheezon par kaam karega: Category aur Search Text
   const filteredProducts = products.filter((p) => {
     const matchesCategory =
       activeCategory === "All" || p.category === activeCategory;
@@ -40,7 +37,6 @@ const App: React.FC = () => {
         overflowX: "hidden",
       }}
     >
-      {/* Navbar ko setSearchQuery pass kar diya */}
       <Navbar setSearchQuery={setSearchQuery} />
 
       {/* Sidebar Overlay */}
@@ -87,7 +83,7 @@ const App: React.FC = () => {
             alignItems: "center",
           }}
         >
-          <span>Hello, Keshav</span>
+          <span>Hello, Guest</span>
           <span
             style={{ cursor: "pointer", fontSize: "24px" }}
             onClick={() => setIsSidebarOpen(false)}
@@ -209,7 +205,6 @@ const App: React.FC = () => {
             zIndex: 1,
           }}
         >
-          {/* Agar search karne par kuch na mile, toh ye message dikhega */}
           {filteredProducts.length === 0 ? (
             <div
               style={{
@@ -219,10 +214,11 @@ const App: React.FC = () => {
                 textAlign: "center",
                 borderRadius: "8px",
                 fontSize: "18px",
+                color: "#0f1111",
               }}
             >
-              Bhai, "<strong>{searchQuery}</strong>" naam ka koi product nahi
-              mila!
+              No products found matching "<strong>{searchQuery}</strong>".
+              Please try a different search term.
             </div>
           ) : (
             filteredProducts.map((product) => (

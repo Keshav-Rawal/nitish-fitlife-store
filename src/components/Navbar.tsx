@@ -22,11 +22,11 @@ const Navbar: React.FC<NavbarProps> = ({ setSearchQuery }) => {
         <div
           style={{ fontSize: "22px", fontWeight: "bold", cursor: "pointer" }}
         >
-          <span style={{ color: "#fff" }}>Nitish</span>
+          <span style={{ color: "#fff" }}>Mega</span>
           <span style={{ color: "#f3a847" }}> Store</span>
         </div>
 
-        {/* Search Bar - Ab ye active hai */}
+        {/* Search Bar */}
         <div
           style={{
             display: "flex",
@@ -38,7 +38,7 @@ const Navbar: React.FC<NavbarProps> = ({ setSearchQuery }) => {
           <input
             type="text"
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search for toys, shoes, supplements..."
+            placeholder="Search for products, brands, or categories..."
             style={{
               width: "100%",
               padding: "10px 15px",
@@ -79,7 +79,7 @@ const Navbar: React.FC<NavbarProps> = ({ setSearchQuery }) => {
             }}
           >
             <span style={{ fontSize: "12px", fontWeight: "normal" }}>
-              Hello, Keshav
+              Hello, Guest
             </span>
             <span>Sign In</span>
           </div>
