@@ -1,6 +1,11 @@
 import React from "react";
 
-const Navbar: React.FC = () => {
+// Prop define kiya hai taaki App.tsx se search function yahan aa sake
+interface NavbarProps {
+  setSearchQuery: (query: string) => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ setSearchQuery }) => {
   return (
     <header>
       {/* Top Main Navbar */}
@@ -18,11 +23,11 @@ const Navbar: React.FC = () => {
         <div
           style={{ fontSize: "22px", fontWeight: "bold", cursor: "pointer" }}
         >
-          <span style={{ color: "#fff" }}>Nitish Bhati</span>
+          <span style={{ color: "#fff" }}>Keshav's</span>
           <span style={{ color: "#f3a847" }}> Store</span>
         </div>
 
-        {/* Search Bar */}
+        {/* Search Bar - Ab ye active hai */}
         <div
           style={{
             display: "flex",
@@ -33,7 +38,8 @@ const Navbar: React.FC = () => {
         >
           <input
             type="text"
-            placeholder="Search for supplements, toys, shoes..."
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search for toys, shoes, supplements..."
             style={{
               width: "100%",
               padding: "10px 15px",
@@ -74,7 +80,7 @@ const Navbar: React.FC = () => {
             }}
           >
             <span style={{ fontSize: "12px", fontWeight: "normal" }}>
-              Hello, Guest
+              Hello, Keshav
             </span>
             <span>Sign In</span>
           </div>
