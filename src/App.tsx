@@ -5,7 +5,19 @@ import { products } from "./data";
 
 const App: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>("All");
-  const categories = ["All", "Wellness", "Vitamins", "Food", "Strength"];
+
+  const categories = [
+    "All",
+    "Wellness",
+    "Vitamins",
+    "Food",
+    "Strength",
+    "Learning Toys",
+    "Soft Toys",
+    "Home Decor",
+    "Sports Shoes",
+    "T-Shirts",
+  ];
 
   const filteredProducts =
     activeCategory === "All"
@@ -24,26 +36,27 @@ const App: React.FC = () => {
           padding: "20px",
         }}
       >
-        {/* Banner Section */}
         <div
           style={{
             padding: "40px 20px",
-            backgroundColor: "#27ae60",
+            backgroundColor: "#2c3e50",
             color: "white",
             borderRadius: "12px",
             marginBottom: "30px",
             textAlign: "center",
           }}
         >
-          <h2>Premium Health & Fitness Essentials</h2>
-          <p>Handpicked supplements for your daily routine.</p>
+          <h2>Nitish Bhati Premium Mega Store</h2>
+          <p>
+            Explore our wide range of Health Supplements, Fashion, Toys & Home
+            Decor.
+          </p>
         </div>
 
-        {/* Category Filters */}
         <div
           style={{
             display: "flex",
-            gap: "15px",
+            gap: "12px",
             marginBottom: "30px",
             justifyContent: "center",
             flexWrap: "wrap",
@@ -54,11 +67,11 @@ const App: React.FC = () => {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               style={{
-                padding: "10px 24px",
+                padding: "8px 20px",
                 borderRadius: "25px",
-                border: `2px solid ${activeCategory === cat ? "#27ae60" : "#2c3e50"}`,
+                border: `2px solid ${activeCategory === cat ? "#2980b9" : "#2c3e50"}`,
                 backgroundColor:
-                  activeCategory === cat ? "#27ae60" : "transparent",
+                  activeCategory === cat ? "#2980b9" : "transparent",
                 color: activeCategory === cat ? "white" : "#2c3e50",
                 cursor: "pointer",
                 fontWeight: "bold",
@@ -70,7 +83,6 @@ const App: React.FC = () => {
           ))}
         </div>
 
-        {/* Products Grid */}
         <div
           style={{
             display: "flex",

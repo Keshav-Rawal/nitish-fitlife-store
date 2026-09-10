@@ -11,14 +11,12 @@ const Navbar: React.FC = () => {
         color: "#fff",
       }}
     >
-      {/* Yahan par maine naam update kar diya hai */}
       <div style={{ fontSize: "24px", fontWeight: "bold" }}>
         Nitish Bhati FitLife Store
       </div>
-
       <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
-        <span style={{ cursor: "pointer" }}>Supplements</span>
-        <span style={{ cursor: "pointer" }}>Healthy Foods</span>
+        <span style={{ cursor: "pointer" }}>Health & Supplements</span>
+        <span style={{ cursor: "pointer" }}>Fashion & Decor</span>
       </div>
     </nav>
   );
